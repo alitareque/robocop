@@ -67,40 +67,28 @@ const movePosition = (curPositionX, curPositionY, curFaceDirection) => {
 }
 
 const turnFace = (direction, curFaceDirection) => {
+    const LEFT = {
+        NORTH: "WEST",
+        WEST: "SOUTH",
+        SOUTH: "EAST",
+        EAST: "NORTH"
+    };
+    const RIGHT = {
+        NORTH: "EAST",
+        EAST: "SOUTH",
+        SOUTH: "WEST",
+        WEST: "NORTH"
+    };
+
     switch (direction) {
         case 'LEFT':
-            switch (curFaceDirection) {
-                case 'NORTH':
-                    curFaceDirection = 'WEST';
-                break;
-                case 'SOUTH':
-                    curFaceDirection = 'EAST';
-                break;
-                case 'EAST':
-                    curFaceDirection = 'NORTH';
-                break;
-                case 'WEST':
-                    curFaceDirection = 'SOUTH';
-                break;
-            }
+            curFaceDirection = LEFT[curFaceDirection];
         break;
         case 'RIGHT':
-            switch (curFaceDirection) {
-                case 'NORTH':
-                    curFaceDirection = 'EAST';
-                break;
-                case 'SOUTH':
-                    curFaceDirection = 'WEST';
-                break;
-                case 'EAST':
-                    curFaceDirection = 'SOUTH';
-                break;
-                case 'WEST':
-                    curFaceDirection = 'NORTH';
-                break;
-            }
+            curFaceDirection = RIGHT[curFaceDirection];
         break;
     }
+    
     return curFaceDirection;
 }
 
